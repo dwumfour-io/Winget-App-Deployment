@@ -1,0 +1,5 @@
+# Ignore common PowerShell temp files
+*.ps1~
+*.ps1.bak
+*.log
+*.tmp
