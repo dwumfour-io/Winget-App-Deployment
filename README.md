@@ -36,11 +36,7 @@ This repository contains two scripts:
    ```powershell
    .\Uninstall-WingetApps.ps1
    ```
-6. Run the GitHub repository setup script:
-   ```powershell
-   .\Setup-Github-Repo.ps1
-   ```
-   This script will create a private repository, clone it, and push your scripts to GitHub. Note that the `--confirm` flag has been deprecated; ensure you manually confirm any necessary actions in GitHub CLI.
+
 
 ## Requirements
 - Windows 10 or later
