@@ -1,0 +1,21 @@
+# Winget Application List
+# Format: AppID | Display Name (optional)
+# Lines starting with # are comments
+
+# Browsers
+Google.Chrome | Google Chrome
+Mozilla.Firefox | Firefox
+
+# Development Tools
+Microsoft.VisualStudioCode | VS Code
+Microsoft.VisualStudio.2022.Community | Visual Studio 2022
+Git.Git | Git
+GitHub.GitHubDesktop | GitHub Desktop
+
+# Productivity
+Microsoft.PowerToys | PowerToys
+Zoom.Zoom | Zoom
+
+# Utilities
+7zip.7zip | 7-Zip
+Notepad++.Notepad++ | Notepad++

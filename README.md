@@ -1,59 +1,83 @@
 # Winget-App-Deployment
 
-PowerShell scripts to deploy and uninstall applications using Winget.
+PowerShell scripts to deploy and uninstall applications using Windows Package Manager (Winget).
 
-## Usage
+## Features
 
-This repository contains two scripts:
-- **Deploy-WingetApps.ps1**: Installs specified applications.
-- **Uninstall-WingetApps.ps1**: Uninstalls specified applications.
+- 📦 Bulk install/uninstall apps from a simple text file
+- 🔇 Silent mode support for automated deployments
+- 💬 Optional display names for clearer output
+- 🔐 Configurable authentication modes
+- ✅ Keeps your app list private (not committed to git)
 
-## How It Works
-1. The scripts read application IDs from `AppsList.txt`.
-2. Each application listed in `AppsList.txt` is installed or uninstalled using Winget.
-3. Applications remain private, as `AppsList.txt` is ignored in `.gitignore` and not committed to GitHub.
+## Quick Start
 
-## Setup Instructions
-1. Clone this repository:
-   ```sh
-   git clone https://github.com/your-github-username/Winget-App-Deployment.git
-   ```
-2. Navigate to the folder:
-   ```sh
+1. **Clone this repository:**
+   ```powershell
+   git clone https://github.com/dwumfour-io/Winget-App-Deployment.git
    cd Winget-App-Deployment
    ```
-3. Create or edit `AppsList.txt` and list the applications you want to install/uninstall (one per line):
+
+2. **Create your apps list:**
+   ```powershell
+   # Copy the example file
+   Copy-Item AppsList.example.txt AppsList.txt
+   
+   # Edit with your desired apps
+   notepad AppsList.txt
    ```
-   Microsoft.VisualStudioCode
-   Google.Chrome
-   Mozilla.Firefox
-   ```
-4. Run the installation script:
+
+3. **Run the installer:**
    ```powershell
    .\Deploy-WingetApps.ps1
    ```
-5. Run the uninstallation script:
-   ```powershell
-   .\Uninstall-WingetApps.ps1
-   ```
 
+## AppsList.txt Format
 
-## Requirements
-- Windows 10 or later
-- PowerShell 5.1 or later
-- Winget installed
-- GitHub CLI installed
+```text
+# Lines starting with # are comments
+# Format: AppID | Display Name (optional)
 
-## GitHub Actions Workflow
-This repository includes a **GitHub Actions CI/CD pipeline** that:
-- **Validates the PowerShell scripts** for syntax errors.
-- **Performs a dry run** to simulate installation/uninstallation.
+Google.Chrome | Google Chrome
+Microsoft.VisualStudioCode | VS Code
+Mozilla.Firefox
+```
 
-## Contributing
-1. Fork this repository.
-2. Create a new branch.
-3. Make your changes.
-4. Submit a pull request.
+## Usage Examples
+
+```powershell
+# Install all apps from AppsList.txt
+.\Deploy-WingetApps.ps1
+
+# Install silently (no prompts)
+.\Deploy-WingetApps.ps1 -Silent
+
+# Use a different apps file
+.\Deploy-WingetApps.ps1 -AppsFile "C:\MyApps.txt"
+
+# Uninstall all apps
+.\Uninstall-WingetApps.ps1
+
+# Uninstall silently
+.\Uninstall-WingetApps.ps1 -Silent
+```
+
+## Parameters
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `-Silent` | Suppress installation prompts | False |
+| `-AuthenticationMode` | interactive, silentPreferred, silent | silent |
+| `-AppsFile` | Path to apps list file | AppsList.txt |
+
+## Finding App IDs
+
+Search for apps using Winget:
+```powershell
+winget search "chrome"
+winget search "visual studio"
+```
 
 ## License
-MIT License
+
+MIT License - see [LICENSE](LICENSE) for details.
